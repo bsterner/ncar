@@ -1,0 +1,16 @@
+FROM cisl-repo/xdmod_job_extractor_base:1.0
+
+ENV REFRESHED_AT 2017-04-28
+LABEL name=xdmod_job_extractor_mvn \
+      version=1.0
+
+ENV JAVA_OPTS="-Dxdmod-job-extractor.properties=xdmod-job-extractor/xdmod-job-extractor.properties"
+
+RUN git clone https://bsterner:ra1der#45@github.com/NCAR/xdmod-job-extractor
+COPY pom.xml ./xdmod-job-extractor
+COPY xdmod-job-extractor.properties ./xdmod-job-extractor
+COPY ./security ./xdmod-job-extractor/security
+
+RUN mvn -Djar.finalName=xdmod-job-extractor -Dmaven.test.skip=true -f xdmod-job-extractor clean package
+
+CMD ["/sbin/init"]
