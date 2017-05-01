@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SingleClientRemoteAddrValveCustomizer implements EmbeddedServletContainerCustomizer {
 
-    private static final String LOOPBACK_ADDRESS_RX = "127\\.\\d+\\.\\d+\\.\\d+|::1|0:0:0:0:0:0:0:1";
+    private static final String LOOPBACK_ADDRESS_RX = "(128|172)\\.\\d+\\.\\d+\\.\\d+|::1|0:0:0:0:0:0:0:1";
 
     private String clientIpAddressRx = LOOPBACK_ADDRESS_RX;
 

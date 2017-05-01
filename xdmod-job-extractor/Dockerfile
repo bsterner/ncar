@@ -21,10 +21,11 @@ LABEL name=xdmod_job_extractor \
 #
 #RUN git clone https://bsterner:ra1der#45@github.com/NCAR/xdmod-job-extractor
 #COPY pom.xml ./xdmod-job-extractor
-#COPY xdmod-job-extractor.properties ./xdmod-job-extractor
-#COPY ./security ./xdmod-job-extractor/security
+COPY security/xdmod-job-extractor.properties ./xdmod-job-extractor
+COPY ./security/sam-tomcat.ucar.edu.keystore ./xdmod-job-extractor/security/
 #
 #RUN mvn -Djar.finalName=xdmod-job-extractor -Dmaven.test.skip=true -f xdmod-job-extractor clean package
+RUN mvn -Djar.finalName=xdmod-job-extractor -Dmaven.test.skip=true -f xdmod-job-extractor package
 
 EXPOSE 10443
 
