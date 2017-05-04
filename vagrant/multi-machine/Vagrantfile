@@ -2,6 +2,24 @@ BOX_IMAGE = "centos/7"
 MANAGER_COUNT = 1
 WORKER_COUNT = 2
 
+# Post install steps (need to be added)
+#
+# (Not necessary, already installed) yum install -y yum-utils
+#
+# sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+# sudo yum makecache fast
+# (Optional) yum-config-manager --enable docker-ce-edge
+# sudo yum -y install docker-ce
+# sudo yum -y install net-tools
+# sudo yum -y install telnet
+
+# sudo adduser dockeruser
+# sudo usermod -aG docker dockeruser
+# sudo usermod -aG wheel dockeruser
+# sudo passwd dockeruser
+# systemctl enable docker
+# systemctl start docker
+
 Vagrant.configure("2") do |config|
   (1..MANAGER_COUNT).each do |i|
     config.vm.define "manager#{i}" do |manager|
