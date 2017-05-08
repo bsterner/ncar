@@ -1,0 +1,185 @@
+##!/bin/bash
+
+#aalias='echo alias $1' >>~/.aliases
+alias renv='source ~/.profile'
+alias rbenv='source ~/.bash_profile'
+alias rall='renv; rbenv'
+alias eenv='vi ~/.profile'
+alias ebenv='vi ~/.bash_profile'
+alias senv='env | igrep'
+alias ealias='vi ~/.aliases'
+alias eprompt='vi ~/.prompt'
+alias dl='pushd ~/Downloads'
+alias ls1='ls -1'
+alias lsl=ls1
+alias lst='ls1 -t'1
+#alias super='ssh bsterneradmin@localhost'
+alias super='su -l bsterneradmin'
+alias xvpn="echo vpn.ncsa.illinois.edu | tr -d '\\n' | pbcopy"
+alias dpswd="echo D0ckerCon2017 | tr -d '\\n' | pbcopy"
+alias keypass="cat $SECURITY_DIR/swegkdb.pass | tr -d '\\n' | pbcopy"
+
+alias ts='echo $timestamp'
+
+# Miscellaneous
+alias share='pd ~/shared'
+alias hs='history | igrep'
+alias func='vi $SCRIPTS_DIR/functions.sh'
+alias ff='find . -iname'
+alias essh='vi ~/.ssh/config'
+alias logdir='pushd $LOG_DIR'
+alias hg='history | grep git'
+alias funcdir='pushd /Users/bsterner/.config/fish/functions'
+alias dev='pushd ~/Development'
+alias syb2='ssh bamboo@sybase2'
+alias sybdev='ssh deploy@sybdev.ncsa.illinois.edu'
+alias amiedist='pushd $XSEDE_DIR/amie-distro'
+alias amiesyb='pushd $XSEDE_DIR/amie-sybdev'
+alias xsede='pushd $XSEDE_DIR'
+alias sshamie='ssh -l amietgdb amie.xsede.org'
+alias devamie='echo Not setup yet' #'ssh -l amietgdb amie.xsede.org'
+alias prodamie='ssh -l amietgdb amie.xsede.org'
+alias sshsybdev='sybdev'
+alias scripts='pushd $SCRIPTS_DIR'
+alias sqlscripts='dev; pushd sql'
+alias pgrestore='sqlscripts; pushd postgres/data'
+alias py='python'
+alias o='open'
+alias ijws='dev; pushd ijworkspace'
+alias gitsub='pushd $IJWS_DIR/training/git/git-subs'
+alias train='pushd $IJWS_DIR/training'
+alias ncat='netcat'
+alias http='httping'
+alias tracert='traceroute'
+alias upcfg='cp ~/.bashrc ~/.bash_profile ~/.profile ~/.aliases ~/.prompt $GITHUB_MAIN/home'
+
+# MySQL
+alias mysqldatadir='sudo cd /usr/local/mysql/data'
+alias mysqldata=mysqldatadir
+alias mydata=mysqldatadir
+alias lsmysqldata='sudo ls /usr/local/mysql/data'
+alias mysqllog='echo /usr/local/mysql/data/cisl-warren.log'
+alias mysqlerrlog='echo /usr/local/mysql/data/mysqld.local.err'
+
+alias gs='git status'
+alias gpr='git-update.sh'
+alias gb='git branch'
+alias glo='git log --oneline'
+
+# Run any of these commands before committing to catch unintentionally added files/lines.
+#git show
+#git log -p --stat
+#git diff --cached
+
+alias vagdir='pushd $GITHUB_MAIN/vagrant'
+alias vag='vagrant'
+
+# Docker aliases
+alias dim='docker images | more'
+alias dsprune='docker system prune'
+alias dockimgs='/Users/bsterner/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux'
+alias dockimages='dockimgs'
+alias dock='pushd $GITHUB_MAIN/docker'
+alias godock='dock'
+alias ghbs='pd $GITHUB_MAIN'
+alias gbsterner='ghbs'
+alias dps='docker ps'
+alias dpsa='docker ps -a'
+alias dcom='docker-compose'
+alias dcp='docker-compose'
+alias da='docker exec -it '
+alias dca='dba'
+alias di='docker inspect'
+alias ds='docker start'
+alias drmi='docker rmi'
+alias dp='docker volume prune'
+alias dock='pushd ~/Development/docker'
+alias swegdocker='ssh bsterner@swegdocker'
+alias cisldock='pushd $SWEG_DOCKER_DIR/xdmod_cisl'
+alias db='docker-build.sh'
+alias mgr1='vagdir; cd multi-machine; vagrant ssh manager1'
+alias wk2='vagdir; cd multi-machine; vagrant ssh worker1'
+alias wk1='vagdir; cd multi-machine; vagrant ssh worker2'
+
+alias lsl=ls1
+alias lsl=ls1
+
+alias build='build.sh'
+alias attach='attach.sh'
+alias remove='remove.sh'
+alias rebuild='rebuild.sh'
+alias rerun='rerun.sh'
+alias run='run.sh'
+alias shell='echo $SHELL'
+alias tmp='pushd ~/tmp'
+
+# Ruby and Rails / XSEDE stuff
+alias chkmemcache='echo "stats settings" | nc localhost 11211'
+alias rlog='vi ~/.irb-history'
+alias secret='RAILS_ENV=test rake secret'
+alias rkt='rake -T'
+alias ber='RAILS_ENV=test bundle exec rake'
+alias bert='ber test'
+alias xras='pushd /Users/bsterner/Development/ijworkspace/xsede'
+alias xscripts='pd $SCRIPTS_DIR/xras'
+alias xa='xras; cd xras_admin'
+alias xapi='xras; cd xras_api'
+alias xs='xras; cd xras_submit'
+alias xr='xras; cd xras_review'
+alias xacc='xras; cd xras_xsede_accounting_service'
+alias xrules='xras; cd xras_rules'
+alias xident='xras; cd xras_xsede_identity_service'
+alias xlog='tail -n 50 log/development.log'
+alias vlog='vi log/development.log'
+alias rxa='xa; start_admin_service.sh'
+alias srs='start_rails_server.sh'
+alias sradm='start_admin_service.sh'
+alias strall='start_all_rails_services.sh'
+alias sprall='stop_all_rails_services.sh'
+alias shrall='ps -aef | grep "rails server"'
+alias rc='RAILS_ENV=development rails c'
+
+# SAM
+alias sshsam='ssh bsterner@sam-tomcat'
+alias ssholdsam='ssh bsterner@krakatoa'
+alias tctest='ssh bsterner@test-sam-tomcat'
+alias sam='pushd $SAM_DIR'
+alias tcr='pushd $DEV_DIR/apache-tomcat-resources/sam'
+alias tchome='pushd $DEV_DIR/apache-tomcat-webapps'
+
+# XDMOD
+alias xdmod='pushd $XDMOD_DIR'
+alias sg='ssh stargate3'
+alias xdmodprod='ssh xdmod-prod.cloud.ucar.edu'
+
+# KUBERNETES
+alias mk='minikube'
+alias mkstart='minikube start --vm-driver=xhyve'
+alias mkstartdebug='mkstart --logtostderr --show-libmachine-logs'
+alias mkstop='minikube stop'
+alias kc='kubectl'
+
+alias rst='status_rails_services.sh'
+
+alias ip='ifconfig | igrep inet'
+
+alias sshvm='ssh xdmod@127.0.0.1 -p 2222'
+alias ys='ssh yellowstone'
+alias secure='pushd $DEV_DIR/security'
+alias killtc='pkill -9 -f tomcat'
+alias tcintellij='pushd $INTELLIJ_TOMCAT_DIR'
+alias mvndep='mvn dependency:tree -Dverbose -Dincludes='
+alias pd='pushd'
+alias hs='history | igrep'
+alias essh='vi ~/.ssh/config'
+
+# RabbitMQ
+alias rle='rabbitmqctl list_exchanges'
+alias rlq='rabbitmqctl list_queues name messages_ready messages_unacknowledged'
+alias rlb='rabbitmqctl list_bindings'
+
+# Node
+alias nbuild='browserify -t [ babelify --presets [ react ] ] src/index.js -o build/app.js'
+alias rjs='cd $IJWS_DIR/training/reactjs'
+alias sammig='pd ~/Development/sam/sam-production-migration'
+alias xje='pd $DEV_DIR/docker/sweg-docker/xdmod-job-extractor'

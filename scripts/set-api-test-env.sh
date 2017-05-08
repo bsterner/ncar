@@ -1,0 +1,2 @@
+export TEST_DB_NAME=xras_api_upgrade_travis
+export RAILS_ENV=test
