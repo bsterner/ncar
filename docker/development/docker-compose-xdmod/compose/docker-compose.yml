@@ -1,0 +1,35 @@
+version: '2'
+services:
+  # Data Volume Container (DVC) Service
+  dvc-service:
+    image: dvc/dvc-base:v1
+    container_name: dvc-container
+    volumes:
+      - dvc-volume:/var/lib/mysql
+      - www-volume:/var/www/html
+  # Percona (aka MySQL) Service
+  percona-service:
+    image: percona/percona-base:v1
+    container_name: percona-container
+    ports:
+      - 3900:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - dvc-volume:/var/lib/mysql
+    links:
+      - dvc-service
+  # Apache2 (http server) Service
+  web:
+    image: apache/apache2-base:v1
+    container_name: apache2-container
+    ports:
+      - "8080:80"
+    volumes:
+      - www-volume:/var/www/html
+    links:
+      - dvc-service
+      - percona-service
+volumes:
+  dvc-volume:
+  www-volume:

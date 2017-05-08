@@ -1,0 +1,27 @@
+version: '2'
+services:
+  percona:
+    container_name: percona-container
+    image: percona/percona-server:5.7
+    ports:
+      - 3900:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    networks:
+      - dc-network
+  web:
+    image: apache/apache-server:v1
+    container_name: apache-container
+    ports:
+      - "8080:80"
+    volumes:
+      - /Users/bsterner/Development/docker/apache/ubuntu-apache-percona/var/www/html:/var/www/html
+      # - logvolume01:/var/log
+    links:
+      - percona
+    networks:
+      - dc-network
+volumes:
+  logvolume01: {}
+networks:
+  dc-network: {}

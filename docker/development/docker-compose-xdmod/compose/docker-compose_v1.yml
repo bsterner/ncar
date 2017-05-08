@@ -1,0 +1,46 @@
+version: '2'
+services:
+  mysqldata:
+    # build: ../percona/percona-git-repository/5.7
+    image: mysqldata/mysqldata-container:v1
+    container_name: mysqldata-container
+    volumes:
+      - data-volume:/var/lib/mysql
+      # - /Users/bsterner/Development/docker/percona/var/lib/mysql:/var/lib/mysql
+      # - /Users/bsterner/Development/docker/perc ona/var/lib/mysql:/var/lib/mysql
+    # networks:
+    #   - dc-network
+  percona:
+    # build: ../percona/percona-git-repository/5.7
+    image: percona/percona-server:5.7
+    container_name: percona-container
+    # image: percona/percona-server:5.7
+    ports:
+      - 3900:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - data-volume:/var/lib/percona/mysqldata
+    links:
+      - mysqldata
+      # - /Users/bsterner/Development/docker/percona/var/lib/mysql:/var/lib/mysql
+    # networks:
+    #   - dc-network
+  web:
+    image: apache/apache-server:v1
+    container_name: apache-container
+    ports:
+      - "8080:80"
+    volumes:
+      - data-volume:/var/lib/web/mysqldata
+      - /Users/bsterner/Development/docker/apache/ubuntu-apache-percona/var/www/html:/var/www/html
+    links:
+      - mysqldata
+      # - percona
+    # networks:
+    #   - dc-network
+# networks:
+#   dc-network:
+volumes:
+  data-volume:
+  # data-volume:

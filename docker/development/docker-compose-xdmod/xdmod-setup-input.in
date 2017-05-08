@@ -1,0 +1,42 @@
+INFILE=dbin
+
+rm $INFILE
+
+# 'Yes' to continue without upgrade
+echo yes >>$INFILE
+
+# Enter 'Database Settings' setup
+echo 2 >>$INFILE
+
+# DB Hostname or IP
+echo percona-container >>$INFILE
+
+# Port
+echo >>$INFILE
+
+# db username
+echo >>$INFILE
+
+# db password
+echo >>$INFILE
+
+# confirm db password
+echo >>$INFILE
+
+# root db username
+echo >>$INFILE
+
+# root db password
+echo password>>$INFILE
+
+# confirm root db password
+echo password>>$INFILE
+
+# Overwrite settings file
+echo yes >>$INFILE
+
+# 'Enter to continue'
+echo >>$INFILE
+
+# Quit
+echo q >>$INFILE

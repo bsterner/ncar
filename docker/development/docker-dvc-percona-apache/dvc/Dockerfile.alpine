@@ -1,0 +1,13 @@
+FROM alpine:3.1
+
+# Don't configure network
+# RUN rm /etc/rc3.d/S40-network
+# RUN sed -i '/is_lxc && lxc_netdown/d' /etc/init.d/rc.sysinit
+RUN apk update
+RUN apk upgrade
+RUN apk add man man-pages
+RUN apk add bash bash-doc bash-completion
+
+VOLUME ["/var/lib/mysql"]
+
+CMD ["/sbin/init"]

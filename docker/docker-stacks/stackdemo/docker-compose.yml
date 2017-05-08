@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  web:
+    # Note image is tagged with registry running on 5000
+    image: 127.0.0.1:5000/stackdemo
+    build: .
+    ports:
+      - "8000:8000"
+  redis:
+    image: redis:alpine

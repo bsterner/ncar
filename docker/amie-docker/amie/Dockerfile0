@@ -1,0 +1,11 @@
+FROM centos:centos-7.2.1511
+
+RUN yum -y update
+#RUN yum install -y httpd
+RUN yum install -y perl5
+
+#EXPOSE  80
+
+# ENTRYPOINT ["/usr/sbin/httpd"]
+
+CMD ["/bin/bash"]

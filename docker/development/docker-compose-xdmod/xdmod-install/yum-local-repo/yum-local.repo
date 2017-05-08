@@ -1,0 +1,6 @@
+[yum-local]
+name=Local Repository for CentOS-$releasever noarch Packages
+baseurl=https://repo.ucar.edu/artifactory/yum-local/$releasever/os/noarch/
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7

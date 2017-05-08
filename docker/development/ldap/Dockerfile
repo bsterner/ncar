@@ -1,0 +1,4 @@
+FROM osixia/openldap:1.1.8
+ENV REFRESHED_AT 2017-01-30
+
+EXPOSE 389

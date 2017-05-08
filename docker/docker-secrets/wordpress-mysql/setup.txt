@@ -1,0 +1,38 @@
+Advanced example: Use secrets with a WordPress service
+In this example, you create a single-node MySQL service with a custom root password, add the credentials as secrets, and create a single-node WordPress service which uses these credentials to connect to MySQL. The next example builds on this one and shows you how to rotate the MySQL password and update the services so that the WordPress service can still connect to MySQL.
+
+This example illustrates some techniques to use Docker secrets to avoid saving sensitive credentials within your image or passing them directly on the command line.
+
+Note: This example uses a single-Engine swarm for simplicity, and uses a single-node MySQL service because a single MySQL server instance cannot be scaled by simply using a replicated service, and setting up a MySQL cluster is beyond the scope of this example.
+
+Also, changing a MySQL root passphrase isn’t as simple as changing a file on disk. You must use a query or a mysqladmin command to change the password in MySQL.
+Generate a random alphanumeric password for MySQL and store it as a Docker secret with the name mysql_password using the docker secret create command. To make the password shorter or longer, adjust the last argument of the openssl command. This is just one way to create a relatively random password. You can use another command to generate the password if you choose.
+
+Note: After you create a secret, you cannot update it. You can only remove and re-create it, and you cannot remove a secret that a service is using. However, you can grant or revoke a running service’s access to secrets using docker service update. If you need the ability to update a secret, consider adding a version component to the secret name, so that you can later add a new version, update the service to use it, then remove the old version.
+The last argument is set to -, which indicates that the input is read from standard input.
+
+$ openssl rand -base64 20 | docker secret create mysql_password -
+
+7zr3frw9fxfh1okkw43sz5zxz (actual value from local env)
+
+The value returned is not the password, but the ID of the secret. In the remainder of this tutorial, the ID output is omitted.
+
+Generate a second secret for the MySQL root user. This secret won’t be shared with the WordPress service created later. It’s only needed to bootstrap the mysql service.
+
+yhkvrklt5r2e3py2dct6cf2lj (actual value from local env)
+
+$ openssl rand -base64 20 | docker secret create mysql_root_password -
+List the secrets managed by Docker using docker secret ls:
+
+$ docker secret ls
+
+ID                          NAME                  CREATED             UPDATED
+l1vinzevzhj4goakjap5ya409   mysql_password        41 seconds ago      41 seconds ago
+yvsczlx9votfw3l0nz5rlidig   mysql_root_password   12 seconds ago      12 seconds ago
+The secrets are stored in the encrypted Raft logs for the swarm.
+
+Create a user-defined overlay network which will be used for communication between the MySQL and WordPress services. There is no need to expose the MySQL service to any external host or container.
+
+$ docker network create -d overlay mysql_private
+
+*** Wordpress password: QaVz4YvCw5n2CVAO3@
