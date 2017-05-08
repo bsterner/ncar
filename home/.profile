@@ -30,10 +30,11 @@ export SAM_DIR=$IJWS_DIR/sam
 export INTELLIJ_TOMCAT_DIR=~/Library/Caches/IntelliJIdea2017.1/tomcat
 export AMIE_DISTRO=~/Development/ijworkspace/xsede/amie-distro
 export GITHUB_DIR=$DEV_DIR/github
-export GITHUB_MAIN=$GITHUB_DIR/bsterner/ncar
+export GITHUB_MAIN=$GITHUB_DIR/main/ncar
 export DOCKER_DIR=$GITHUB_MAIN/docker
 export SCRIPTS_DIR=$GITHUB_MAIN/scripts
-export SWEG_DOCKER_DIR=$GITHUB_DIR/ncar/sweg-docker
+export NCAR_DOCKER_DIR=$GITHUB_DIR/ncar
+export SWEG_DOCKER_DIR=$NCAR_DIR/sweg-docker
 
 PATH=$PATH:$SWEG_DOCKER_DIR/sweg-docker-util
 PATH=$PATH:$SCRIPTS_DIR
