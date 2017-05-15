@@ -11,6 +11,7 @@ PATH=$PATH:/Users/bsterner/.rvm/gems/ruby-2.3.1@global/bin
 PATH=$PATH:/Users/bsterner/.rvm/rubies/ruby-2.3.1/bin
 PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 PATH=$PATH:/usr/local/Cellar/mobile-shell/1.2.6_4/bin
+PATH=$PATH:/usr/local/mysql/bin
 
 PATH=$PATH:/usr/local/sbin
 
@@ -34,7 +35,11 @@ export GITHUB_MAIN=$GITHUB_DIR/main/ncar
 export DOCKER_DIR=$GITHUB_MAIN/docker
 export SCRIPTS_DIR=$GITHUB_MAIN/scripts
 export NCAR_DOCKER_DIR=$GITHUB_DIR/ncar
-export SWEG_DOCKER_DIR=$NCAR_DIR/sweg-docker
+export SWEG_DOCKER_DIR=$NCAR_DOCKER_DIR/sweg-docker
+
+# == Tomcat Run from Command Line (No IntelliJ) ==
+export CATALINA_HOME=/Users/bsterner/Development/apache-tomcat-7.0.72
+export CATALINA_BASE=/Users/bsterner/Development/apache-tomcat-webapps/sam-base
 
 PATH=$PATH:$SWEG_DOCKER_DIR/sweg-docker-util
 PATH=$PATH:$SCRIPTS_DIR

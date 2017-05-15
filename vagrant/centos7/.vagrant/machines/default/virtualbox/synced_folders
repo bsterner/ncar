@@ -1,1 +1,1 @@
-{"rsync":{"/vagrant":{"type":"rsync","guestpath":"/vagrant","hostpath":"/Users/bsterner/Development/vagrant/centos7","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}}}
+{"rsync":{"/vagrant":{"type":"rsync","guestpath":"/vagrant","hostpath":"/Users/bsterner/Development/github/main/ncar/vagrant/centos7","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}}}

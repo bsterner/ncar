@@ -1,4 +1,4 @@
-##!/bin/bash
+#!/bin/bash
 
 #aalias='echo alias $1' >>~/.aliases
 alias renv='source ~/.profile'
@@ -22,6 +22,9 @@ alias keypass="cat $SECURITY_DIR/swegkdb.pass | tr -d '\\n' | pbcopy"
 alias ts='echo $timestamp'
 
 # Miscellaneous
+alias showcert='openssl x509 -inform der -in https_localhost_sam.cer -noout -text'
+alias support='pd $DEV_DIR/Support'
+alias dt='pd ~/Desktop'
 alias share='pd ~/shared'
 alias hs='history | igrep'
 alias func='vi $SCRIPTS_DIR/functions.sh'
@@ -37,7 +40,10 @@ alias amiedist='pushd $XSEDE_DIR/amie-distro'
 alias amiesyb='pushd $XSEDE_DIR/amie-sybdev'
 alias xsede='pushd $XSEDE_DIR'
 alias sshamie='ssh -l amietgdb amie.xsede.org'
-alias devamie='echo Not setup yet' #'ssh -l amietgdb amie.xsede.org'
+alias adc='ssh amie-dev-client'
+alias ads='ssh amie-dev-server'
+alias adb='ssh amie-dev-db'
+# alias devamie='echo Not setup yet' #'ssh -l amietgdb amie.xsede.org'
 alias prodamie='ssh -l amietgdb amie.xsede.org'
 alias sshsybdev='sybdev'
 alias scripts='pushd $SCRIPTS_DIR'
@@ -81,8 +87,9 @@ alias dockimgs='/Users/bsterner/Library/Containers/com.docker.docker/Data/com.do
 alias dockimages='dockimgs'
 alias dock='pushd $GITHUB_MAIN/docker'
 alias godock='dock'
-alias gmain='pd $GITHUB_MAIN'
-alias ghmain='gmain'
+alias gm='pd $GITHUB_MAIN'
+alias ghmain='gm'
+alias gmain='gm'
 alias dps='docker ps'
 alias dpsa='docker ps -a'
 alias dcom='docker-compose'
@@ -114,7 +121,14 @@ alias shell='echo $SHELL'
 alias tmp='pushd ~/tmp'
 
 # Ruby and Rails / XSEDE stuff
-alias chkmemcache='echo "stats settings" | nc localhost 11211'
+alias mcsettings='echo "stats settings" | nc localhost 11211'
+alias mcstats='echo "stats" | nc localhost 11211'
+alias mcitems='echo "stats items" | nc localhost 11211'
+alias mcsize='echo "stats sizes" | nc localhost 11211'
+alias mcslab='echo "stats slabs" | nc localhost 11211'
+alias mcget='echo "stats get" | nc localhost 11211'
+alias mcgets='echo "stats gets" | nc localhost 11211'
+
 alias rlog='vi ~/.irb-history'
 alias secret='RAILS_ENV=test rake secret'
 alias rkt='rake -T'
@@ -144,8 +158,12 @@ alias sshsam='ssh bsterner@sam-tomcat'
 alias ssholdsam='ssh bsterner@krakatoa'
 alias tctest='ssh bsterner@test-sam-tomcat'
 alias sam='pushd $SAM_DIR'
+
+# TOMCAT
 alias tcr='pushd $DEV_DIR/apache-tomcat-resources/sam'
 alias tchome='pushd $DEV_DIR/apache-tomcat-webapps'
+# alias tcstart='pushd'
+alias samlog='tail -n 30 -f $CATALINA_BASE/logs/sam-stdout.log'
 
 # XDMOD
 alias xdmod='pushd $XDMOD_DIR'
@@ -164,6 +182,7 @@ alias rst='status_rails_services.sh'
 alias ip='ifconfig | igrep inet'
 
 alias sshvm='ssh xdmod@127.0.0.1 -p 2222'
+alias startvm='vagdir; pd centos7; vag up; popd; popd'
 alias ys='ssh yellowstone'
 alias secure='pushd $DEV_DIR/security'
 alias killtc='pkill -9 -f tomcat'
