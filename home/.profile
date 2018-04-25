@@ -5,10 +5,6 @@
 # == Global Config ==
 
 PATH=$PATH:/usr/local/Cellar/perl/5.24.1/bin
-PATH=$PATH:/Users/bsterner/.rvm/bin
-PATH=$PATH:/Users/bsterner/.rvm/gems/ruby-2.3.1/bin
-PATH=$PATH:/Users/bsterner/.rvm/gems/ruby-2.3.1@global/bin
-PATH=$PATH:/Users/bsterner/.rvm/rubies/ruby-2.3.1/bin
 PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 PATH=$PATH:/usr/local/Cellar/mobile-shell/1.2.6_4/bin
 PATH=$PATH:/usr/local/mysql/bin
@@ -31,9 +27,9 @@ export SAM_DIR=$IJWS_DIR/sam
 export INTELLIJ_TOMCAT_DIR=~/Library/Caches/IntelliJIdea2017.1/tomcat
 export AMIE_DISTRO=~/Development/ijworkspace/xsede/amie-distro
 export GITHUB_DIR=$DEV_DIR/github
-export GITHUB_MAIN=$GITHUB_DIR/main/ncar
+export GITHUB_MAIN=$GITHUB_DIR
 export DOCKER_DIR=$GITHUB_MAIN/docker
-export SCRIPTS_DIR=$GITHUB_MAIN/scripts
+export SCRIPTS_DIR=$DEV_DIR/scripts
 export NCAR_DOCKER_DIR=$GITHUB_DIR/ncar
 export SWEG_DOCKER_DIR=$NCAR_DOCKER_DIR/sweg-docker
 
@@ -45,17 +41,13 @@ PATH=$PATH:$SWEG_DOCKER_DIR/sweg-docker-util
 PATH=$PATH:$SCRIPTS_DIR
 PATH=$PATH:$SCRIPTS_DIR/xras
 
-# === RVM / Ruby / Rails Config ===
-# Initialize rvm as a function
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
 SECRET_KEY_BASE=e763ed79fcc4fb6c2637a50d37b4f8f877fcd1be2ca793c38d3264698262e173da9afb5e783f7174263907754037ab856cc26a731c51f79465969eb36d1bd2dd
 
 #RAILS_ENV="test"
-RAILS_ENV="development"
-RUBYOPT="-W0"
+export RAILS_ENV="development"
+#RUBYOPT="-W0"
 
-export SECRET_KEY_BASE RAILS_ENV RUBYOPT
+export SECRET_KEY_BASE RAILS_ENV
 
 # === Perl Config ===
 
@@ -74,6 +66,14 @@ export PATH=$PATH:$AMIE/scripts
 # === Source dependencies ===
 source ~/.aliases
 source ~/.prompt
+source $DEV_DIR/scripts/timestamp.sh
 source functions.sh
-source /usr/local/etc/bash_completion
-source <(kubectl completion bash)
+#source /usr/local/etc/bash_completion
+#source <(kubectl completion bash)
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

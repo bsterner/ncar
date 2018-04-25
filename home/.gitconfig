@@ -1,0 +1,39 @@
+[user]
+	email = bsterner@ucar.edu
+	name = bsterner
+#    email = briansterner@gmail.com
+#    name = bsterner
+
+[core]
+    excludesfile = /Users/bsterner/.gitignore
+    #bundle config git.allow_insecure=true
+
+#[difftool "sourcetree"]
+#    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+#    path = 
+
+#[mergetool "sourcetree"]
+#    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+#    trustExitCode = true
+
+[pull]
+    rebase = true
+
+[status]
+    submoduleSummary = true
+
+[diff]
+    submodule = log
+
+[alias]
+    gr = log --graph --oneline --decorate
+    gra = log --graph --oneline --decorate --all
+    grl = log --graph --oneline --decorate --branches --not --remotes=origin
+
+    pff = pull  --ff-only
+    mff = merge --ff-only
+#[filter "lfs"]
+#	clean = git-lfs clean -- %f
+#	smudge = git-lfs smudge -- %f
+#	process = git-lfs filter-process
+#	required = true

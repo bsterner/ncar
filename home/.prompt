@@ -99,6 +99,7 @@ export PS1='\[\e[36m\]\u\[\e[m\]@\[\e[36m\]\h\[\e[m\] [ \[\e[31m\] ${PS1X} \[\e[
 #export PS1="${YELLOW_BEGIN}${USER_CODE}${COLOR_END}${GREY_BEG}@${COLOR_END}${RED_BEG}${HOST_CODE}${COLOR_END}${GREY_BEG}${COLOR_END}${GREEN_BEGIN} (${PS1X}) ${COLOR_END}${GREY_BEG}${PROMPT_TOKEN}${COLOR_END}"
 
 # CYGWIN
+#export PS1='\[\e[34;1m\]\u@\h \[\e[33m\]${PS1X}\[\e[0m\] $ '
 export PS1='\[\e[32m\]\u@\h \[\e[33m\]${PS1X}\[\e[0m\] $ '
 
 ################################### Built using http://ezprompt.net/ ##################################

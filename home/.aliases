@@ -1,6 +1,8 @@
 #!/bin/bash
 
 #aalias='echo alias $1' >>~/.aliases
+alias igrep='grep -i'
+alias cpcfg='pushd /Users/bsterner; cp .profile .prompt .aliases .bash_profile .bashrc /Users/Shared/tmp; popd'
 alias renv='source ~/.profile'
 alias rbenv='source ~/.bash_profile'
 alias rall='renv; rbenv'
@@ -11,12 +13,12 @@ alias ealias='vi ~/.aliases'
 alias eprompt='vi ~/.prompt'
 alias dl='pushd ~/Downloads'
 alias ls1='ls -1'
+alias ll='ls -altr'
 alias lsl=ls1
 alias lst='ls1 -t'1
 #alias super='ssh bsterneradmin@localhost'
 alias super='su -l bsterneradmin'
 alias xvpn="echo vpn.ncsa.illinois.edu | tr -d '\\n' | pbcopy"
-alias dpswd="echo D0ckerCon2017 | tr -d '\\n' | pbcopy"
 alias keypass="cat $SECURITY_DIR/swegkdb.pass | tr -d '\\n' | pbcopy"
 
 alias ts='echo $timestamp'
@@ -52,12 +54,16 @@ alias pgrestore='sqlscripts; pushd postgres/data'
 alias py='python'
 alias o='open'
 alias ijws='dev; pushd ijworkspace'
-alias gitsub='pushd $IJWS_DIR/training/git/git-subs'
 alias train='pushd $IJWS_DIR/training'
 alias ncat='netcat'
 alias http='httping'
 alias tracert='traceroute'
 alias upcfg='cp ~/.bashrc ~/.bash_profile ~/.profile ~/.aliases ~/.prompt $GITHUB_MAIN/home'
+
+# System
+alias lockscreen='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
+alias lock='lockscreen'
+alias pfind='ps aux | grep -i'
 
 # MySQL
 alias mysqldatadir='sudo cd /usr/local/mysql/data'
@@ -67,17 +73,26 @@ alias lsmysqldata='sudo ls /usr/local/mysql/data'
 alias mysqllog='echo /usr/local/mysql/data/cisl-warren.log'
 alias mysqlerrlog='echo /usr/local/mysql/data/mysqld.local.err'
 
+# Git
+alias gitcbr='echo git branch --set-upstream-to=origin/[branch_name] [branch_name]'
+alias grcp='git remote get-url origin | pbcopy'
+alias gcbr='gitcbr'
 alias gs='git status'
+alias gitsub='pushd $IJWS_DIR/training/git/git-subs'
+alias grv='git remote -v'
+alias gvr='grv'
 alias gpr='git-update.sh'
 alias gb='git branch'
 alias glo='git log --oneline'
+alias gpff='git pff'
+alias gcommit="git commit -m 'Temporary checkin' -a"
 
 # Run any of these commands before committing to catch unintentionally added files/lines.
 #git show
 #git log -p --stat
 #git diff --cached
 
-alias vagdir='pushd $GITHUB_MAIN/vagrant'
+alias vagdir='pushd $DEV_DIR/vagrant'
 alias vag='vagrant'
 
 # Docker aliases
@@ -121,6 +136,7 @@ alias shell='echo $SHELL'
 alias tmp='pushd ~/tmp'
 
 # Ruby and Rails / XSEDE stuff
+alias sshsubmit='ssh xras-submit-prod.ucar.edu'
 alias mcsettings='echo "stats settings" | nc localhost 11211'
 alias mcstats='echo "stats" | nc localhost 11211'
 alias mcitems='echo "stats items" | nc localhost 11211'
@@ -139,6 +155,7 @@ alias xscripts='pd $SCRIPTS_DIR/xras'
 alias xa='xras; cd xras_admin'
 alias xapi='xras; cd xras_api'
 alias xs='xras; cd xras_submit'
+alias xsum='xras; cd xras_summary'
 alias xr='xras; cd xras_review'
 alias xacc='xras; cd xras_xsede_accounting_service'
 alias xrules='xras; cd xras_rules'
@@ -187,6 +204,7 @@ alias ys='ssh yellowstone'
 alias secure='pushd $DEV_DIR/security'
 alias killtc='pkill -9 -f tomcat'
 alias tcintellij='pushd $INTELLIJ_TOMCAT_DIR'
+alias intellijlog='pushd ~/Library/Logs/IntelliJIdea2018.1'
 alias mvndep='mvn dependency:tree -Dverbose -Dincludes='
 alias pd='pushd'
 alias hs='history | igrep'
